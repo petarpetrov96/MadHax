@@ -21,10 +21,10 @@ function createSquares(amount, id,last=false){
 			rect.setAttribute('fill','#95B3D7');
 		}
 		if(last && i === startingSquare){
-			rect.setAttribute("onclick","userClick(true)");
+            rect.addEventListener("click",function() {userClick(true);});
 		}
 		if(last && i !== startingSquare){
-			rect.setAttribute("onclick","userClick(false)");
+            rect.addEventListener("click",function() {userClick(false);});
 		}
 		svg.appendChild(rect);
 		div.appendChild(svg);
@@ -130,11 +130,9 @@ function gameWrapper(squares,lineSegs){
 
 function userClick(success){
 	if(success){
-		alert("YOU SUCCESSFULLY CLICKED THE RIGHT BUTTON. YOU DON'T LOSE YET");
 		minigameFail();
 	}
 	else{
-		alert("WRONG. WHAT'S MISSING FROM G_LAG? U. U GO TO GULAG!")
 		minigameSuccess();
 	}
 }
