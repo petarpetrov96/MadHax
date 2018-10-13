@@ -22,7 +22,7 @@ var loadMinigame = function(name) {
         if(ajax.readyState==4) {
             document.getElementById("minigame").innerHTML=ajax.responseText;
             executeAllScripts(document.getElementById("minigame"));
-            showMinigame();
+            //showMinigame();
             //setTimeout(hideMinigame,2000);
         }
     };
@@ -30,5 +30,5 @@ var loadMinigame = function(name) {
 };
 
 window.addEventListener("load",function() {
-    loadMinigame("minigame2.min.html");
+    loadMinigame("minigame1.min.html");
 });

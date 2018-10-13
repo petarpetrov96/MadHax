@@ -57,7 +57,7 @@ var createFirstScene = function(GameEngine) {
     mainbuilding.position.y = 12.5;
     mainbuilding.position.z = 30;
     
-    firstSceneFunctions.animateCameraToPosition(camera, 45, 300, new BABYLON.Vector3(50, 10, -30));
-    firstSceneFunctions.animateCameraTargetToPosition(camera, 45, 300, new BABYLON.Vector3(50, 0, 0));
+    firstSceneFunctions.animateCameraToPosition(camera, 45, 900, new BABYLON.Vector3(50, 10, -30));
+    firstSceneFunctions.animateCameraTargetToPosition(camera, 45, 900, new BABYLON.Vector3(50, 0, 0));
     return scene;
 };
