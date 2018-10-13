@@ -132,14 +132,20 @@ function gameWrapper(squares,lineSegs){
 
 function userClick(success){
 	if(success){
-		alert("YOU SUCCESSFULLY CLICKED THE RIGHT BUTTON. YOU DON'T LOSE YET);
+		alert("YOU SUCCESSFULLY CLICKED THE RIGHT BUTTON. YOU DON'T LOSE YET");
+		minigameFail();
 	}
 	else{
 		alert("WRONG. NOW YOU GO TO GULAG")
+		minigameSuccess();
 	}
 }
 
 //TODO: Add a function that calls when minigame is over
+
+function minigameFail(){}
+
+function minigameSuccess(){}
 
 
 window.addEventListener('load',function(){
