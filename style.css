@@ -24,6 +24,7 @@ html, body {
     z-index: 9999999;
     background: black;
     opacity: 0.35;
+    display: none;
 }
 #minigame {
     position: fixed;
@@ -36,4 +37,5 @@ html, body {
     z-index: 10000000;
     background: white;
     opacity: 0.9;
+    display: none;
 }

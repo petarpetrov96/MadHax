@@ -56,10 +56,6 @@ window.addEventListener("load", function() {
     GameEngine.canvas = document.getElementById("renderCanvas");
     GameEngine.engine = new BABYLON.Engine(GameEngine.canvas, true, { preserveDrawingBuffer: true, stencil: true });
     GameEngine.loadNextScene(createScene);
-    setTimeout(function() {
-        document.getElementById("minigameblocker").style.display="none";
-        document.getElementById("minigame").style.display="none";
-    },5000);
 });
 
 window.addEventListener("keyup", function(event) {
