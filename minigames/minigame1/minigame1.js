@@ -134,7 +134,7 @@ function userClick(success){
 		minigameFail();
 	}
 	else{
-		alert("WRONG. NOW YOU GO TO GULAG")
+		alert("WRONG. WHAT'S MISSING FROM G_LAG? U. U GO TO GULAG!")
 		minigameSuccess();
 	}
 }
