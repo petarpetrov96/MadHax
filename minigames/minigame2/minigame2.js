@@ -101,7 +101,6 @@ function fillBucket(){
 	//make water go down a little
 	var gameWindow = document.getElementById("window");
 	var waterDiv = gameWindow.firstElementChild;
-	//console.log(waterDiv.offsetHeight);
 	var newHeight = waterDiv.offsetHeight - 50;
 	waterDiv.style.height = newHeight + "px";
 	waterDiv.style.marginTop = (500 - newHeight);
@@ -118,7 +117,6 @@ function emptyBucket(){
 	var gameWindow = document.getElementById("window");
 	var waterDiv = gameWindow.firstElementChild;
 	var newHeight = waterDiv.offsetHeight - 50;
-	console.log(newHeight);
 	if(newHeight < 0){
 		minigameSuccess();
 	}
@@ -143,7 +141,6 @@ function startTimer(_seconds){
 			clearInterval(timer);
 		}
 		var t = document.getElementById("minigame2_timer");
-		console.log("0" + seconds)
 		t.innerHTML = "0:"  + ("0" + seconds).substr(-2);
 	},1000);
 }
