@@ -40,7 +40,7 @@ var createFirstScene = function(GameEngine) {
     var scene = new BABYLON.Scene(GameEngine.engine);
     var camera = new BABYLON.ArcRotateCamera("camera1", -Math.PI/4, 1.1, 165, new BABYLON.Vector3(0, 70, -140), scene);
     camera.setTarget(new BABYLON.Vector3(50,25,0));
-    camera.attachControl(GameEngine.canvas, true);
+    camera.detachControl(GameEngine.canvas, true);
 
     var light = new BABYLON.PointLight("light1", new BABYLON.Vector3(50, 50, -30), scene);
     light.diffuse = new BABYLON.Color3(1.0, 1.0, 1.0);
