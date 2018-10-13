@@ -42,9 +42,10 @@ var createFirstScene = function(GameEngine) {
     camera.setTarget(new BABYLON.Vector3(50,25,0));
     camera.attachControl(GameEngine.canvas, true);
 
-    var light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 10, 0), scene);
+    var light = new BABYLON.PointLight("light1", new BABYLON.Vector3(50, 50, -30), scene);
     light.diffuse = new BABYLON.Color3(1.0, 1.0, 1.0);
     light.ambient = new BABYLON.Color3(0.8, 0.8, 0.8);
+    light.intensity = 0.5;
     
     firstSceneFunctions.buildChimney(40,28,30,60,0,0,0,scene);
     firstSceneFunctions.buildChimney(40,28,30,60,100,0,0,scene);
@@ -56,6 +57,22 @@ var createFirstScene = function(GameEngine) {
     mainbuilding.position.x = 50;
     mainbuilding.position.y = 12.5;
     mainbuilding.position.z = 30;
+    
+    var greenery = new BABYLON.StandardMaterial(scene);
+    greenery.alpha = 1;
+    greenery.diffuseColor = new BABYLON.Color3(0.10, 0.58, 0.27);
+    greenery.specularColor = new BABYLON.Color3(0.0, 0.0, 0.0);
+    greenery.ambientColor = new BABYLON.Color3(0.10, 0.58, 0.27);
+    
+    var ground = BABYLON.MeshBuilder.CreateBox("ground",{
+        width: 1000,
+        height: 0.1,
+        depth: 1000,
+    }, scene);
+    ground.position.x = 0;
+    ground.position.y = -0.05;
+    ground.position.z = 0;
+    ground.material = greenery;
     
     firstSceneFunctions.animateCameraToPosition(camera, 45, 900, new BABYLON.Vector3(50, 10, -30));
     firstSceneFunctions.animateCameraTargetToPosition(camera, 45, 900, new BABYLON.Vector3(50, 0, 0));
