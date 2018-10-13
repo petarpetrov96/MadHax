@@ -24,10 +24,22 @@ firstSceneFunctions.buildChimney = function(diameterBottom, diameterMiddle, diam
     mesh.position.z = centerZ;
 };
 
+firstSceneFunctions.animateCameraTargetToPosition = function(cam, speed, frameCount, newPos) {
+    var ease = new BABYLON.CubicEase();
+    ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+    BABYLON.Animation.CreateAndStartAnimation('at5', cam, 'target', speed, frameCount, cam.target, newPos, 0, ease);
+}
+
+firstSceneFunctions.animateCameraToPosition = function(cam, speed, frameCount, newPos) {
+    var ease = new BABYLON.CubicEase();
+    ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+    BABYLON.Animation.CreateAndStartAnimation('at4', cam, 'position', speed, frameCount, cam.position, newPos, 0, ease);
+}
+
 var createFirstScene = function(GameEngine) {
     var scene = new BABYLON.Scene(GameEngine.engine);
-    var camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0, 50, -100), scene);
-    camera.setTarget(BABYLON.Vector3.Zero());
+    var camera = new BABYLON.ArcRotateCamera("camera1", -Math.PI/4, 1.1, 165, new BABYLON.Vector3(0, 70, -140), scene);
+    camera.setTarget(new BABYLON.Vector3(50,25,0));
     camera.attachControl(GameEngine.canvas, true);
 
     var light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 10, 0), scene);
@@ -44,6 +56,8 @@ var createFirstScene = function(GameEngine) {
     mainbuilding.position.x = 50;
     mainbuilding.position.y = 12.5;
     mainbuilding.position.z = 30;
-
+    
+    firstSceneFunctions.animateCameraToPosition(camera, 45, 300, new BABYLON.Vector3(50, 10, -30));
+    firstSceneFunctions.animateCameraTargetToPosition(camera, 45, 300, new BABYLON.Vector3(50, 0, 0));
     return scene;
 };
