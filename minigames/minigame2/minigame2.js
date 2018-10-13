@@ -14,11 +14,8 @@ var svg; //THIS IS THE BUCKET ONE
 var isDown = false;
 var bucketHasWater = false;
 
-var timer;
-
 function gameWrapper(){
 	setUpGraphics();
-	setUpTimer();
 }
 
 function setUpGraphics(){
@@ -84,15 +81,6 @@ function setUpGraphics(){
 	main_window.appendChild(genSvg);
 }
 
-function setUpTimer(){
-	var main_window = document.getElementById("window");
-	var t = document.createElement("div");
-	t.setAttribute("id","minigame2_timer");
-	t.innerHTML = "0:35";
-	main_window.appendChild(t);
-	startTimer(15);
-}
-
 function fillBucket(){
 	bucketHasWater = true;
 	//make water go down a little
@@ -129,27 +117,11 @@ function isBucketOutsideContainer(bucketX,bucketY){
 			 !(bucketY+50 >= containerStart[1] && bucketY <= containerEnd[1]))
 }
 
-function startTimer(_seconds){
-	var seconds=_seconds;
-	timer=setInterval(function(){
-		seconds--;
-		if(seconds == 0){
-			minigameFail();
-			clearInterval(timer);
-		}
-		var t = document.getElementById("minigame2_timer");
-		t.innerHTML = "0:"  + ("0" + seconds).substr(-2);
-	},1000);
-}
-
 function minigameFail(){
 	alert("YOU FAILED!");
 }
 
-function minigameSuccess(){
-	clearInterval(timer);
-	alert("YOU SUCCEEDED");
-}
+function minigameSuccess() {}
 
 
 window.addEventListener('load',function(){
