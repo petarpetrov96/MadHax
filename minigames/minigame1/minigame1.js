@@ -21,10 +21,10 @@ function createSquares(amount, id,last=false){
 			rect.setAttribute('fill','#95B3D7');
 		}
 		if(last && i === startingSquare){
-			rect.setAttribute("onclick","userClick(false)");
+			rect.setAttribute("onclick","userClick(true)");
 		}
 		if(last && i !== startingSquare){
-			rect.setAttribute("onclick","userClick(true)");
+			rect.setAttribute("onclick","userClick(false)");
 		}
 		svg.appendChild(rect);
 		div.appendChild(svg);
@@ -126,8 +126,6 @@ function gameWrapper(squares,lineSegs){
 	createSquares(squares,2);
 	createLines(squares,lineSegs,3);
 	createSquares(squares,4,last=true);
-	
-	//console.log(startingSquare);
 }
 
 function userClick(success){
