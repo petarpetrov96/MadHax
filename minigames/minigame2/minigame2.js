@@ -3,9 +3,6 @@
 	Win condition
  
 */
-
-
-
 var mousePosition;
 var offset = [0,0];
 var waterStart = [0,0];

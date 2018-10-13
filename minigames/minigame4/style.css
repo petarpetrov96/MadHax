@@ -1,0 +1,49 @@
+#window {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	border: solid 1px black;
+	width: 1000px;
+	height:700px;
+}
+
+#minigame2_water {
+	position:absolute;
+	top: 20%;
+	left: 20%;
+	/*height: 500px;
+	width: 500px;*/
+	background-color: blue;
+}
+
+#minigame2_generator {
+	position:absolute;
+	top: 80%;
+	left: 40%;
+	height: 100px;
+	width: 100px;
+}
+
+#minigame2_container {
+	position:absolute;
+	top: 20%;
+	left: 20%;
+}
+
+#minigame2_timern{
+	position:absolute;
+	font-size: 32px;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	color: red;
+	top: 20%;
+}
+
+/*
+#minigame2_bucket {
+	position:absolute;
+	top: 0px;
+	left: 0px;
+	height: 100px;
+	width: 100px;
+}
+*/
