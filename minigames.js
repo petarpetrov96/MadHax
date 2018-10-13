@@ -20,11 +20,10 @@ var loadMinigame = function(name) {
     ajax.open("GET",name,true);
     ajax.onreadystatechange=function() {
         if(ajax.readyState==4) {
-            console.log(ajax);
             document.getElementById("minigame").innerHTML=ajax.responseText;
             executeAllScripts(document.getElementById("minigame"));
-            showMinigame();
-            setTimeout(hideMinigame,2000);
+            //showMinigame();
+            //setTimeout(hideMinigame,2000);
         }
     };
     ajax.send(null);
