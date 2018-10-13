@@ -17,8 +17,11 @@ function createSquares(amount){
 	}
 }
 
-function createLines(amount){
-	
+function createLines(amount, lineSeg){
+	//here we will have random lines connecting all elements
+	var main_window = document.getElementById("window");
+	var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+	//math behind - each line will have X segments
 }
 
 
