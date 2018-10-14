@@ -189,7 +189,12 @@
             }
         }
 
-        function minigameSuccess(){}
+        function minigameSuccess(){
+            unloadMinigame();
+            GameAudio.sounds.intense4.pause();
+            GameAudio.sounds.intense0.play();
+            showCaption("CONGRATULATIONS!!! YOU SAVED THE POWERPLANT!");
+        }
 
 		</script>
 		<style type="text/css">

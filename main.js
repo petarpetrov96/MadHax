@@ -23,15 +23,15 @@ function startGame() {
         setTimeout(startGame, 500);
         return;
     }
-    GameEngine.loadNextScene(createSecondScene);
-    /*GameAudio.sounds.intro.play();
+    //GameEngine.loadNextScene(createSecondScene);
+    GameAudio.sounds.intro.play();
     showCaption("There was a casual day for Joe Trumpet. He was at ease in his usual position, looking around if everything is fine with his one and only true love – nuclear reactor.");
     GameAudio.sounds.narrator1.play();
     setTimeout(function() {
         GameAudio.sounds.narrator1.pause();
         hideCaption();
         GameEngine.loadNextScene(createFirstScene);
-    },12000);*/
+    },12000);
 }
 
 window.addEventListener("load", function() {

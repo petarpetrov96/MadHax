@@ -137,7 +137,23 @@
             }
         }
 
-        function minigameSuccess(){}
+        function minigameSuccess(){
+            unloadMinigame();
+            secondSceneFunctions.animateCameraToPosition(GameEngine.camera, 45, 300, new BABYLON.Vector3(25, 20, 100));
+            secondSceneFunctions.animateCameraTargetToPosition(GameEngine.camera, 45, 300, new BABYLON.Vector3(25, 10, 150));
+            GameAudio.sounds.intense3.pause();
+            GameAudio.sounds.intense4.play();
+            GameAudio.sounds.earthquake.play();
+            setTimeout(function() {
+                showCaption("Can Joe survive more challenges? Is he able to protect his power plant?");
+                GameAudio.sounds.narrator6.play();
+                setTimeout(function() {
+                    hideCaption();
+                    GameAudio.sounds.narrator6.pause();
+                    loadMinigame("minigame4.min.html");
+                }, 6000);
+            }, 5000);
+        }
 
         window.addEventListener("keyup", function(event){
             var keycode = event.keyCode;

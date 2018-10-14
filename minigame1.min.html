@@ -153,15 +153,15 @@
             secondSceneFunctions.animateCameraToPosition(GameEngine.camera, 45, 300, new BABYLON.Vector3(-25, 20, 100));
             secondSceneFunctions.animateCameraTargetToPosition(GameEngine.camera, 45, 300, new BABYLON.Vector3(-25, 10, 150));
             GameAudio.sounds.intense1.pause();
-            GameAudio.sounds.intense2.play();
+            GameAudio.sounds.intense3.play();
             setTimeout(function() {
-                showCaption("Water, water everywhere. Have you done everything to provide from deadly catastrophe?");
-                GameAudio.sounds.narrator4.play();
+                showCaption("Are you a maze runner? Or just a maze walker?");
+                GameAudio.sounds.narrator5.play();
                 setTimeout(function() {
                     hideCaption();
-                    GameAudio.sounds.narrator4.pause();
-                    loadMinigame("minigame2.min.html");
-                }, 6000);
+                    GameAudio.sounds.narrator5.pause();
+                    loadMinigame("minigame3.min.html");
+                }, 3000);
             }, 5000);
         }
 
