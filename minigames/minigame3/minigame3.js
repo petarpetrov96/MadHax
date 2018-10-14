@@ -79,7 +79,7 @@ function setUpInstructions(){
 
 function gameWrapper(){
 	setUpInstructions();
-	dict = maze(8,11);
+	dict = maze(8,11);	
 	document.getElementById('out').innerHTML = display(dict,playerCoords); 
 	console.log(dict);	
 }
