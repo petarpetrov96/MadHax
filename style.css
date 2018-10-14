@@ -39,3 +39,11 @@ html, body {
     opacity: 0.9;
     display: none;
 }
+#caption {
+    text-align: center;
+    font-family: "Comic Sans MS";
+    font-size: 25px;
+    margin-top: 338px;
+    width: 100%;
+    float: left;
+}

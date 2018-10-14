@@ -22,13 +22,17 @@ var loadMinigame = function(name) {
         if(ajax.readyState==4) {
             document.getElementById("minigame").innerHTML=ajax.responseText;
             executeAllScripts(document.getElementById("minigame"));
-            //showMinigame();
-            //setTimeout(hideMinigame,2000);
+            showMinigame();
         }
     };
     ajax.send(null);
 };
 
-window.addEventListener("load",function() {
+var unloadMinigame = function() {
+    hideMinigame();
+    document.getElementById("minigame").innerHTML = "";
+}
+
+/* window.addEventListener("load",function() {
     loadMinigame("minigame1.min.html");
-});
+}); */

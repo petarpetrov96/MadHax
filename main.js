@@ -17,10 +17,19 @@ GameEngine.loadNextScene = function(createSceneFunction) {
     });
 };
 
+function startGame() {
+    if(GameAudio.ready != GameAudio.expected) {
+        setTimeout(startGame, 500);
+        return;
+    }
+    GameEngine.loadNextScene(createFirstScene);
+    GameAudio.sounds.beep.play();
+}
+
 window.addEventListener("load", function() {
     GameEngine.canvas = document.getElementById("renderCanvas");
     GameEngine.engine = new BABYLON.Engine(GameEngine.canvas, true, { preserveDrawingBuffer: true, stencil: true });
-    GameEngine.loadNextScene(createFirstScene);
+    startGame();
 });
 
 window.addEventListener("keyup", function(event) {

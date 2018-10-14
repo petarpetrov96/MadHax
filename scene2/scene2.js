@@ -1,7 +1,7 @@
-var createScene = function () {
+var createSecondScene = function (GameEngine) {
 
     // Create the scene space
-    var scene = new BABYLON.Scene(engine);
+    var scene = new BABYLON.Scene(GameEngine.engine);
 
     //Adding a light
     var light = new BABYLON.PointLight("pointLight", new BABYLON.Vector3(0, 15, 0), scene);
@@ -14,7 +14,7 @@ var createScene = function () {
     camera.setTarget(BABYLON.Vector3.Zero());
 
 // Attach the camera to the canvas
-    camera.attachControl(canvas, true);
+    camera.attachControl(GameEngine.canvas, true);
 
 
     // Add and manipulate meshes in the scene
