@@ -40,7 +40,7 @@ function createLines(amount, lineSegs,id){
 	div.setAttribute("id","minigame_lines" + id);
 	var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 	svg.setAttribute("width","400");
-	svg.setAttribute("height","100");
+	svg.setAttribute("height","200");
 	var segmentArray = createLineSegments(amount,lineSegs,startingSquare);
 	for(var i = 0; i < amount; i++){
 		createLineFromArray(segmentArray[i],svg);
@@ -91,9 +91,9 @@ function createLineFromArray(lineArray, svg){
 	for(var i = 0; i < segs; i++){
 		var line = document.createElementNS(svgNS,'line');
 		line.setAttribute('x1',50 + lineArray[i]*100);
-		line.setAttribute('y1',i*(100*1.0)/(segs));
+		line.setAttribute('y1',i*(200*1.0)/(segs) );
 		line.setAttribute('x2',50 + lineArray[i+1]*100);
-		line.setAttribute('y2',(i+1)*(100*1.0)/(segs));
+		line.setAttribute('y2',(i+1)*(200*1.0)/(segs));
 		line.setAttribute('style','stroke:rgb(255,0,0);stroke-width:2');
 		svg.appendChild(line);
 	}
@@ -114,18 +114,25 @@ function shuffleArray(array) {
 	return array;
 }
 
+function setUpInstructions(){
+	var main_window = document.getElementById("window");
+	var instructions = document.createElement("p");
+	instructions.innerHTML = "Instructions: You have a highlighted nuclear source. Find where the source terminates." + 
+							"Simply click on the terminating square to not explode. Click on a different one to explode. It's very simple.";
+	instructions.style.float = "right";
+	instructions.style.width = "50%";
+	main_window.appendChild(instructions);
+}
 	
-//determine which one is correct
-// pick an arbitrary starting point, see what it connects to through the arrays
 
 function gameWrapper(squares,lineSegs){
-	//this is the starting square, we want to propagate through the line segments to the final square.
+	setUpInstructions();
 	startingSquare = Math.floor(Math.random() * (squares)); //now I have to propagate this through squares
 	createSquares(squares,0);
 	createLines(squares,lineSegs,1);
 	createSquares(squares,2);
 	createLines(squares,lineSegs,3);
-	createSquares(squares,4,last=true);
+	createSquares(squares,4,last=true);	
 }
 
 function userClick(success){
@@ -145,6 +152,6 @@ function minigameSuccess(){}
 
 
 window.addEventListener('load',function(){
-	gameWrapper(4,0);
+	gameWrapper(4,4);
 });
 //

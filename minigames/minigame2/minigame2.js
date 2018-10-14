@@ -10,7 +10,7 @@ var waterEnd = [0,0];
 
 var containerStart= [0,0];
 var containerEnd = [0,0];
-var svg; //THIS IS THE BUCKET ONE
+var bucket; //THIS IS THE BUCKET ONE
 var isDown = false;
 var bucketHasWater = false;
 
@@ -65,10 +65,12 @@ function setUpGraphics(){
 	
 
 	//"bucket"
+	/*
 	svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 	svg.setAttribute("width","100");
 	svg.setAttribute("height","100");
 	svg.style.position = "absolute";
+	svg.setAttribute("id","minigame2_bucket");
 	var svgNS = svg.namespaceURI;
 	var rect = document.createElementNS(svgNS,'rect');
 	rect.setAttribute('x',0);
@@ -78,7 +80,24 @@ function setUpGraphics(){
 	rect.setAttribute('fill','#3b3b3b');
 	svg.appendChild(rect);
 	main_window.appendChild(svg);
+	main_window.appendChild(genSvg);*/
+	
+	bucket = document.createElement("img");
+	bucket.setAttribute("src","bucket_empty.png");
+	bucket.setAttribute("width","100");
+	bucket.setAttribute("height","100");
+	bucket.style.position = "absolute";
+	bucket.setAttribute("id","minigame2_bucket");
+	main_window.appendChild(bucket);
 	main_window.appendChild(genSvg);
+}
+
+function setUpInstructions(){
+	var main_window = document.getElementById("window");
+	var instructions = document.createElement("p");
+	instructions.innerHTML = "Instructions: Oh no! Our generator is flooded with water. Use your trusty grey bucket to empty all the water. " + 
+							"Drag the bucket in and out of the tank to drain the water. Drain all the water!";
+	main_window.appendChild(instructions);
 }
 
 function fillBucket(){
@@ -97,7 +116,7 @@ function fillBucket(){
 }
 
 function emptyBucket(){
-	svg.firstChild.setAttribute("fill","#3b3b3b");
+	bucket.setAttribute("src","bucket_empty.png");
 	bucketHasWater = false;
 	var gameWindow = document.getElementById("window");
 	var waterDiv = gameWindow.firstElementChild;
@@ -109,7 +128,7 @@ function emptyBucket(){
 
 function isBucketInWater(bucketX,bucketY){
 	return ((bucketX >= waterStart[0] && bucketX <= waterEnd[0]) &&
-			 (bucketY-30 >= waterStart[1] && bucketY <= waterEnd[1]))
+			 (bucketY >= waterStart[1] && bucketY <= waterEnd[1]))
 }
 
 function isBucketOutsideContainer(bucketX,bucketY){
@@ -118,7 +137,6 @@ function isBucketOutsideContainer(bucketX,bucketY){
 }
 
 function minigameFail(){
-	alert("YOU FAILED!");
 }
 
 function minigameSuccess() {}
@@ -127,6 +145,7 @@ function minigameSuccess() {}
 window.addEventListener('load',function(){
 
 	gameWrapper();
+	setUpInstructions();
 	document.addEventListener('mouseup', function() {
 		isDown = false; 
 		}, true);
@@ -141,10 +160,10 @@ window.addEventListener('load',function(){
 			};
 			bucketX = (mousePosition.x + offset[0])
 			bucketY = (mousePosition.y + offset[1])
-			svg.style.left = bucketX + 'px';
-			svg.style.top  = bucketY + 'px';
+			bucket.style.left = bucketX + 'px';
+			bucket.style.top  = bucketY + 'px';
 			if(!bucketHasWater && isBucketInWater(bucketX,bucketY)){
-				svg.firstChild.setAttribute("fill","green");
+				bucket.setAttribute("src","bucket_full.png");
 				fillBucket();
 			}
 			else if(bucketHasWater && isBucketOutsideContainer(bucketX,bucketY)){
@@ -153,9 +172,9 @@ window.addEventListener('load',function(){
 		}
 	}, true);
 
-	svg.addEventListener('mousedown', function(e) {
+	bucket.addEventListener('mousedown', function(e) {
 		isDown = true;
-		var svgRect = svg.getBoundingClientRect();
+		var svgRect = bucket.getBoundingClientRect();
 		offset = [
 			svgRect.x - e.clientX,
 			svgRect.y - e.clientY
