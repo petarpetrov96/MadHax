@@ -130,7 +130,7 @@ function emptyBucket(){
 
 function isBucketInWater(bucketX,bucketY){
 	return ((bucketX >= waterStart[0] && bucketX <= waterEnd[0]) &&
-			 (bucketY-30 >= waterStart[1] && bucketY <= waterEnd[1]))
+			 (bucketY >= waterStart[1] && bucketY <= waterEnd[1]))
 }
 
 function isBucketOutsideContainer(bucketX,bucketY){
