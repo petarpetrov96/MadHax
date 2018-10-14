@@ -148,7 +148,22 @@
 
         function minigameFail(){}
 
-        function minigameSuccess(){}
+        function minigameSuccess(){
+            unloadMinigame();
+            secondSceneFunctions.animateCameraToPosition(GameEngine.camera, 45, 300, new BABYLON.Vector3(-25, 20, 100));
+            secondSceneFunctions.animateCameraTargetToPosition(GameEngine.camera, 45, 300, new BABYLON.Vector3(-25, 10, 150));
+            GameAudio.sounds.intense1.pause();
+            GameAudio.sounds.intense2.play();
+            setTimeout(function() {
+                showCaption("Water, water everywhere. Have you done everything to provide from deadly catastrophe?");
+                GameAudio.sounds.narrator4.play();
+                setTimeout(function() {
+                    hideCaption();
+                    GameAudio.sounds.narrator4.pause();
+                    loadMinigame("minigame2.min.html");
+                }, 6000);
+            }, 5000);
+        }
 
 
         gameWrapper(4,4);

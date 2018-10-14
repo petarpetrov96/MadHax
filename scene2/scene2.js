@@ -22,10 +22,10 @@ var createSecondScene = function (GameEngine) {
     light.intensity = 0.5;
 
     // Parameters : name, position, scene
-    var camera = new BABYLON.ArcRotateCamera("camera2", -Math.PI/4, 1.1, 165, new BABYLON.Vector3(0, 0, -10), scene);
-    camera.setPosition(new BABYLON.Vector3(0,20,0));
-    camera.setTarget(new BABYLON.Vector3(0,10,150));
-    camera.detachControl(GameEngine.canvas, true);
+    GameEngine.camera = new BABYLON.ArcRotateCamera("camera2", -Math.PI/4, 1.1, 165, new BABYLON.Vector3(0, 0, -10), scene);
+    GameEngine.camera.setPosition(new BABYLON.Vector3(0,20,0));
+    GameEngine.camera.setTarget(new BABYLON.Vector3(0,10,150));
+    GameEngine.camera.detachControl(GameEngine.canvas, true);
 
 
     // Add and manipulate meshes in the scene
@@ -89,8 +89,8 @@ var createSecondScene = function (GameEngine) {
     cluster2.material = mat;
 
 
-    secondSceneFunctions.animateCameraToPosition(camera, 45, 300, new BABYLON.Vector3(-100, 20, 100));
-    secondSceneFunctions.animateCameraTargetToPosition(camera, 45, 300, new BABYLON.Vector3(-100, 10, 150));
+    secondSceneFunctions.animateCameraToPosition(GameEngine.camera, 45, 300, new BABYLON.Vector3(-100, 20, 100));
+    secondSceneFunctions.animateCameraTargetToPosition(GameEngine.camera, 45, 300, new BABYLON.Vector3(-100, 10, 150));
     
     GameAudio.sounds.intense1.play();
     setTimeout(function() {

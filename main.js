@@ -2,6 +2,7 @@ var GameEngine = {
     engine: null,
     canvas: null,
     scene: null,
+    camera: null,
 };
 
 GameEngine.loadNextScene = function(createSceneFunction) {

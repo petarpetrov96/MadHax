@@ -38,9 +38,9 @@ firstSceneFunctions.animateCameraToPosition = function(cam, speed, frameCount, n
 
 var createFirstScene = function(GameEngine) {
     var scene = new BABYLON.Scene(GameEngine.engine);
-    var camera = new BABYLON.ArcRotateCamera("camera1", -Math.PI/4, 1.1, 165, new BABYLON.Vector3(0, 70, -140), scene);
-    camera.setTarget(new BABYLON.Vector3(50,25,0));
-    camera.detachControl(GameEngine.canvas, true);
+    GameEngine.camera = new BABYLON.ArcRotateCamera("camera1", -Math.PI/4, 1.1, 165, new BABYLON.Vector3(0, 70, -140), scene);
+    GameEngine.camera.setTarget(new BABYLON.Vector3(50,25,0));
+    GameEngine.camera.detachControl(GameEngine.canvas, true);
 
     var light = new BABYLON.PointLight("light1", new BABYLON.Vector3(50, 50, -30), scene);
     light.diffuse = new BABYLON.Color3(1.0, 1.0, 1.0);
@@ -74,8 +74,8 @@ var createFirstScene = function(GameEngine) {
     ground.position.z = 0;
     ground.material = greenery;
     
-    firstSceneFunctions.animateCameraToPosition(camera, 45, 900, new BABYLON.Vector3(50, 10, -30));
-    firstSceneFunctions.animateCameraTargetToPosition(camera, 45, 900, new BABYLON.Vector3(50, 0, 0));
+    firstSceneFunctions.animateCameraToPosition(GameEngine.camera, 45, 900, new BABYLON.Vector3(50, 10, -30));
+    firstSceneFunctions.animateCameraTargetToPosition(GameEngine.camera, 45, 900, new BABYLON.Vector3(50, 0, 0));
     
     setTimeout(function() {
         showCaption("But suddenly Joe noticed that something really terrible is happening… Joe knows that he being strong independent man is the only one who can prevent power plant from enormous disaster.");

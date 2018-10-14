@@ -68,7 +68,7 @@
             bucket.setAttribute("src","bucket_empty.png");
             bucket.setAttribute("width","100");
             bucket.setAttribute("height","100");
-            bucket.style.position = "absolute";
+            bucket.style.position = "fixed";
             bucket.setAttribute("id","minigame2_bucket");
             bucket.addEventListener('mousedown', function(e) {
                 e.preventDefault();
@@ -129,7 +129,22 @@
 
         function minigameFail(){}
 
-        function minigameSuccess() {console.log('You win!');}
+        function minigameSuccess() {
+            unloadMinigame();
+            secondSceneFunctions.animateCameraToPosition(GameEngine.camera, 45, 300, new BABYLON.Vector3(-25, 20, 100));
+            secondSceneFunctions.animateCameraTargetToPosition(GameEngine.camera, 45, 300, new BABYLON.Vector3(-25, 10, 150));
+            GameAudio.sounds.intense2.pause();
+            GameAudio.sounds.intense3.play();
+            setTimeout(function() {
+                showCaption("Are you a maze runner? Or just a maze walker?");
+                GameAudio.sounds.narrator5.play();
+                setTimeout(function() {
+                    hideCaption();
+                    GameAudio.sounds.narrator5.pause();
+                    loadMinigame("minigame3.min.html");
+                }, 3000);
+            },5000);
+        }
         
         window.addEventListener('mouseup', function(e) {
             e.preventDefault();
