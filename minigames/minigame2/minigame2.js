@@ -72,6 +72,7 @@ function setUpGraphics(){
 	svg.setAttribute("width","100");
 	svg.setAttribute("height","100");
 	svg.style.position = "absolute";
+	svg.setAttribute("id","minigame2_bucket");
 	var svgNS = svg.namespaceURI;
 	var rect = document.createElementNS(svgNS,'rect');
 	rect.setAttribute('x',0);
@@ -91,6 +92,14 @@ function setUpTimer(){
 	t.innerHTML = "0:35";
 	main_window.appendChild(t);
 	startTimer(15);
+}
+
+function setUpInstructions(){
+	var main_window = document.getElementById("window");
+	var instructions = document.createElement("p");
+	instructions.innerHTML = "Instructions: Oh no! Our generator is flooded with water. Use your trusty grey bucket to empty all the water. " + 
+							"Drag the bucket in and out of the tank to drain the water. Drain all the water!";
+	main_window.appendChild(instructions);
 }
 
 function fillBucket(){
@@ -143,18 +152,17 @@ function startTimer(_seconds){
 }
 
 function minigameFail(){
-	alert("YOU FAILED!");
 }
 
 function minigameSuccess(){
 	clearInterval(timer);
-	alert("YOU SUCCEEDED");
 }
 
 
 window.addEventListener('load',function(){
 
 	gameWrapper();
+	setUpInstructions();
 	document.addEventListener('mouseup', function() {
 		isDown = false; 
 		}, true);

@@ -1,5 +1,6 @@
 var playerCoords = [0,0];
 var dict;
+
 function maze(x,y) {
     var n=x*y-1;
     if (n<0) {alert("illegal maze dimensions");return;}
@@ -35,8 +36,6 @@ function maze(x,y) {
     return ({x: x, y: y, horiz: horiz, verti: verti});
 }
 
-
-
 //(y,x) = (j-1)/2, (k-2)/4 or (j,k) = (2y+1),(4x+2)
 function display(m,playerCoords) {
     var text= [];
@@ -70,7 +69,16 @@ function display(m,playerCoords) {
     return text.join('');
 }
 
+function setUpInstructions(){
+	var main_window = document.getElementById("window");
+	var instructions = document.createElement("p");
+	instructions.innerHTML = "Instructions: You got lost in the nuclear maze. Don't worry, this happens to all of us. " + 
+							"Use the arrow keys to find your way out.";
+	main_window.appendChild(instructions);
+}
+
 function gameWrapper(){
+	setUpInstructions();
 	dict = maze(8,11);
 	document.getElementById('out').innerHTML = display(dict,playerCoords); 
 	console.log(dict);	

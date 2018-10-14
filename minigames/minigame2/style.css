@@ -30,7 +30,7 @@
 	left: 20%;
 }
 
-#minigame2_timern{
+#minigame2_timer{
 	position:absolute;
 	font-size: 32px;
 	font-family: "Comic Sans MS", cursive, sans-serif;
@@ -38,12 +38,11 @@
 	top: 20%;
 }
 
-/*
+
 #minigame2_bucket {
 	position:absolute;
-	top: 0px;
+	top: 200px;
 	left: 0px;
 	height: 100px;
 	width: 100px;
 }
-*/
