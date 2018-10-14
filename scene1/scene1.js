@@ -76,5 +76,16 @@ var createFirstScene = function(GameEngine) {
     
     firstSceneFunctions.animateCameraToPosition(camera, 45, 900, new BABYLON.Vector3(50, 10, -30));
     firstSceneFunctions.animateCameraTargetToPosition(camera, 45, 900, new BABYLON.Vector3(50, 0, 0));
+    
+    setTimeout(function() {
+        showCaption("But suddenly Joe noticed that something really terrible is happening… Joe knows that he being strong independent man is the only one who can prevent power plant from enormous disaster.");
+        GameAudio.sounds.narrator2.play();
+        setTimeout(function() {
+            hideCaption();
+            GameAudio.sounds.narrator2.pause();
+            GameAudio.sounds.intro.pause();
+            GameEngine.loadNextScene(createSecondScene);
+        }, 11000);
+    }, 15000);
     return scene;
 };
