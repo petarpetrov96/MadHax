@@ -58,7 +58,37 @@ var createSecondScene = function (GameEngine) {
     var ceiling = ground.clone("ceiling");
 	ceiling.rotate(BABYLON.Axis.X, Math.PI, BABYLON.Space.LOCAL);
     ground.position.y = -45;
-    
+	
+
+
+
+    var mat = new BABYLON.StandardMaterial("mat", scene);
+    var texture = new BABYLON.Texture("https://i.imgur.com/qxB21gg.jpg", scene);
+    mat.diffuseTexture = texture;
+
+    var columns = 1;  // 6 columns
+    var rows = 1;  // 4 rows
+
+    var faceUV = new Array(6);
+
+    //set all values to zero
+    for (var i = 0; i < 6; i++) {
+        faceUV[i] = new BABYLON.Vector4(0, 0, 0, 0);
+    }
+
+    //overwrite wanted face with sprite coordinates
+    faceUV[1] = new BABYLON.Vector4(3 / columns, 0, (3 + 1) / columns, 1 / rows);
+
+    var options = {
+        width: 10,
+        height: 3,
+        depth: 5,
+        faceUV: faceUV
+    };
+
+    cluster2.material = mat;
+
+
     secondSceneFunctions.animateCameraToPosition(camera, 45, 300, new BABYLON.Vector3(-100, 20, 100));
     secondSceneFunctions.animateCameraTargetToPosition(camera, 45, 300, new BABYLON.Vector3(-100, 10, 150));
     
