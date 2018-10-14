@@ -10,15 +10,13 @@ var waterEnd = [0,0];
 
 var containerStart= [0,0];
 var containerEnd = [0,0];
-var svg; //THIS IS THE BUCKET ONE
+var bucket; //THIS IS THE BUCKET ONE
 var isDown = false;
 var bucketHasWater = false;
 
-var timer;
 
 function gameWrapper(){
 	setUpGraphics();
-	setUpTimer();
 }
 
 function setUpGraphics(){
@@ -68,6 +66,7 @@ function setUpGraphics(){
 	
 
 	//"bucket"
+	/*
 	svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 	svg.setAttribute("width","100");
 	svg.setAttribute("height","100");
@@ -82,17 +81,18 @@ function setUpGraphics(){
 	rect.setAttribute('fill','#3b3b3b');
 	svg.appendChild(rect);
 	main_window.appendChild(svg);
+	main_window.appendChild(genSvg);*/
+	
+	bucket = document.createElement("img");
+	bucket.setAttribute("src","bucket_empty.png");
+	bucket.setAttribute("width","100");
+	bucket.setAttribute("height","100");
+	bucket.style.position = "absolute";
+	bucket.setAttribute("id","minigame2_bucket");
+	main_window.appendChild(bucket);
 	main_window.appendChild(genSvg);
 }
 
-function setUpTimer(){
-	var main_window = document.getElementById("window");
-	var t = document.createElement("div");
-	t.setAttribute("id","minigame2_timer");
-	t.innerHTML = "0:35";
-	main_window.appendChild(t);
-	startTimer(15);
-}
 
 function setUpInstructions(){
 	var main_window = document.getElementById("window");
@@ -118,7 +118,7 @@ function fillBucket(){
 }
 
 function emptyBucket(){
-	svg.firstChild.setAttribute("fill","#3b3b3b");
+	bucket.setAttribute("src","bucket_empty.png");
 	bucketHasWater = false;
 	var gameWindow = document.getElementById("window");
 	var waterDiv = gameWindow.firstElementChild;
@@ -138,24 +138,10 @@ function isBucketOutsideContainer(bucketX,bucketY){
 			 !(bucketY+50 >= containerStart[1] && bucketY <= containerEnd[1]))
 }
 
-function startTimer(_seconds){
-	var seconds=_seconds;
-	timer=setInterval(function(){
-		seconds--;
-		if(seconds == 0){
-			minigameFail();
-			clearInterval(timer);
-		}
-		var t = document.getElementById("minigame2_timer");
-		t.innerHTML = "0:"  + ("0" + seconds).substr(-2);
-	},1000);
-}
-
 function minigameFail(){
 }
 
 function minigameSuccess(){
-	clearInterval(timer);
 }
 
 
@@ -177,10 +163,10 @@ window.addEventListener('load',function(){
 			};
 			bucketX = (mousePosition.x + offset[0])
 			bucketY = (mousePosition.y + offset[1])
-			svg.style.left = bucketX + 'px';
-			svg.style.top  = bucketY + 'px';
+			bucket.style.left = bucketX + 'px';
+			bucket.style.top  = bucketY + 'px';
 			if(!bucketHasWater && isBucketInWater(bucketX,bucketY)){
-				svg.firstChild.setAttribute("fill","green");
+				bucket.setAttribute("src","bucket_full.png");
 				fillBucket();
 			}
 			else if(bucketHasWater && isBucketOutsideContainer(bucketX,bucketY)){
@@ -189,9 +175,9 @@ window.addEventListener('load',function(){
 		}
 	}, true);
 
-	svg.addEventListener('mousedown', function(e) {
+	bucket.addEventListener('mousedown', function(e) {
 		isDown = true;
-		var svgRect = svg.getBoundingClientRect();
+		var svgRect = bucket.getBoundingClientRect();
 		offset = [
 			svgRect.x - e.clientX,
 			svgRect.y - e.clientY
