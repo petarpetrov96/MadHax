@@ -7,43 +7,57 @@
 	height:700px;
 }
 
-#minigame2_water {
+#minigame4_water {
 	position:absolute;
-	top: 20%;
-	left: 20%;
-	/*height: 500px;
-	width: 500px;*/
-	background-color: blue;
+	top: 10%;
+	left: 25%;
+	height: 600px;
+	width: 500px;
+	background-color: #3385ff;
 }
 
-#minigame2_generator {
+#minigame4_left_valves {
+	position: absolute;
+	top: 10%;
+	left: 12%;
+}
+
+#minigame4_right_valves {
+	position: absolute;
+	top: 10%;
+	right: 12%;
+}
+
+.minigame4_left_valve {
+	height: 120px;
+	margin-right: 90%;
+	width: 120px;
+	float:left;
+}
+
+.minigame4_right_valve {
+	height: 120px;
+	margin-left: 90%;
+	width: 120px;
+	float:right;
+}
+
+#minigame4_pipeline{
 	position:absolute;
-	top: 80%;
-	left: 40%;
+	top: 10%;
+	left: 25%;
+	height: 600px;
+	width: 500px;
+}
+
+#minigame4_inspection, #minigame4_repair {
 	height: 100px;
 	width: 100px;
+	float: left;
+	margin-right: 80%;
+	border: 5px solid black;
 }
 
-#minigame2_container {
-	position:absolute;
-	top: 20%;
-	left: 20%;
+img {
+	border: 1px solid black;
 }
-
-#minigame2_timern{
-	position:absolute;
-	font-size: 32px;
-	font-family: "Comic Sans MS", cursive, sans-serif;
-	color: red;
-	top: 20%;
-}
-
-/*
-#minigame2_bucket {
-	position:absolute;
-	top: 0px;
-	left: 0px;
-	height: 100px;
-	width: 100px;
-}
-*/
