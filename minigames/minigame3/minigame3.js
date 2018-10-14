@@ -3,7 +3,7 @@ var dict;
 
 function maze(x,y) {
     var n=x*y-1;
-    if (n<0) {alert("illegal maze dimensions");return;}
+    if (n<0) {return;}
     var horiz=[]; for (var j= 0; j<x+1; j++) horiz[j]= [];
     var verti=[]; for (var j= 0; j<y+1; j++) verti[j]= [];
     var here= [Math.floor(Math.random()*x), Math.floor(Math.random()*y)];
@@ -81,7 +81,6 @@ function gameWrapper(){
 	setUpInstructions();
 	dict = maze(8,11);	
 	document.getElementById('out').innerHTML = display(dict,playerCoords); 
-	console.log(dict);	
 }
 
 function move(direction){
@@ -92,7 +91,6 @@ function move(direction){
 		//check if above me is a wall. If so, do nothing
 		if(pX == 0 || typeof dict.horiz[pY][pX-1] === 'undefined')
 		{ 
-			console.log("WALL");
 		}
 		else {
 			playerCoords[0] = playerCoords[0] - 1;
@@ -104,7 +102,6 @@ function move(direction){
 		//check if above me is a wall. If so, do nothing
 		if(pY == 0 || typeof dict.verti[pY-1][pX] === 'undefined')
 		{ 
-			console.log("WALL");
 		}
 		else {
 			playerCoords[1] = playerCoords[1] - 1;
@@ -116,7 +113,6 @@ function move(direction){
 		//check if above me is a wall. If so, do nothing
 		if(pX == dict.y-1 || typeof dict.horiz[pY][pX] === 'undefined')
 		{ 
-			console.log("WALL");
 		}
 		else {
 			playerCoords[0] = playerCoords[0] + 1;
@@ -128,7 +124,6 @@ function move(direction){
 		//check if above me is a wall. If so, do nothing
 		if(pY == dict.x-1 || typeof dict.verti[pY][pX] === 'undefined')
 		{ 
-			console.log("WALL");
 		}
 		else {
 			playerCoords[1] = playerCoords[1] + 1;

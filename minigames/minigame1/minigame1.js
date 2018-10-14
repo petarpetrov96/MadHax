@@ -78,10 +78,7 @@ function createLineSegments(amount, lineSegs, startSquare){
 			arrays[j][i+1] = randomArray[j];
 		}
 	}
-	console.log(startingSquare);
-	console.log(arrays);
 	startingSquare = arrays[startSquare][lineSegs+1]; // set starting square to the last;
-	console.log(startingSquare);
 	return arrays;
 }
 
@@ -137,10 +134,10 @@ function gameWrapper(squares,lineSegs){
 
 function userClick(success){
 	if(success){
-		minigameFail();
+		minigameSuccess();
 	}
 	else{
-		minigameSuccess();
+		minigameFail();
 	}
 }
 

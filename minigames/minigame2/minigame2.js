@@ -121,7 +121,7 @@ function emptyBucket(){
 	var gameWindow = document.getElementById("window");
 	var waterDiv = gameWindow.firstElementChild;
 	var newHeight = waterDiv.offsetHeight - 50;
-	if(newHeight < 0){
+	if(newHeight <= 0){
 		minigameSuccess();
 	}
 }
@@ -136,8 +136,7 @@ function isBucketOutsideContainer(bucketX,bucketY){
 			 !(bucketY+50 >= containerStart[1] && bucketY <= containerEnd[1]))
 }
 
-function minigameFail(){
-}
+function minigameFail(){}
 
 function minigameSuccess() {}
 
@@ -146,7 +145,8 @@ window.addEventListener('load',function(){
 
 	gameWrapper();
 	setUpInstructions();
-	document.addEventListener('mouseup', function() {
+	document.addEventListener('mouseup', function(e) {
+        e.preventDefault();
 		isDown = false; 
 		}, true);
 
@@ -173,6 +173,7 @@ window.addEventListener('load',function(){
 	}, true);
 
 	bucket.addEventListener('mousedown', function(e) {
+        e.preventDefault();
 		isDown = true;
 		var svgRect = bucket.getBoundingClientRect();
 		offset = [

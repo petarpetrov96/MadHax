@@ -112,7 +112,6 @@ function shuffleArray(array) {
 function leftValveClick(index){
 	if(!inspect)return;
 	if(faulty.indexOf(index) > -1){
-		console.log("FAULTY INDEX: " + index);
 		setTimeout(function(){
 			var ind = connections[index];
 			var right_valves = document.getElementById("minigame4_right_valves");
@@ -125,7 +124,6 @@ function leftValveClick(index){
 		
 	}
 	else{
-		console.log("Good index:" + index);
 		setTimeout(function(){
 			var ind = connections[index];
 			var right_valves = document.getElementById("minigame4_right_valves");
@@ -174,7 +172,6 @@ function selectRepair(){
 		repair = false;
 		rpr.style.border = "solid 5px black";
 	}
-	console.log("Select repair");
 }
 
 function repairValve(ind){
@@ -191,8 +188,7 @@ function repairValve(ind){
 	}
 }
 
-function minigameSuccess(){
-}
+function minigameSuccess(){}
 
 window.addEventListener('load',function(){
 	setUpInstructions();
