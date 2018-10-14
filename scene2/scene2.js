@@ -64,29 +64,31 @@ var createSecondScene = function (GameEngine) {
 
     var mat = new BABYLON.StandardMaterial("mat", scene);
     var texture = new BABYLON.Texture("https://i.imgur.com/qxB21gg.jpg", scene);
+    texture.uScale = 3;
+    texture.vScale = 1;
     mat.diffuseTexture = texture;
-
-    var columns = 1;  // 6 columns
-    var rows = 1;  // 4 rows
-
-    var faceUV = new Array(6);
-
-    //set all values to zero
-    for (var i = 0; i < 6; i++) {
-        faceUV[i] = new BABYLON.Vector4(0, 0, 0, 0);
-    }
-
-    //overwrite wanted face with sprite coordinates
-    faceUV[1] = new BABYLON.Vector4(3 / columns, 0, (3 + 1) / columns, 1 / rows);
-
-    var options = {
-        width: 10,
-        height: 3,
-        depth: 5,
-        faceUV: faceUV
-    };
-
     cluster2.material = mat;
+    var mat2 = new BABYLON.StandardMaterial("mat", scene);
+    var texture2 = new BABYLON.Texture("https://i.imgur.com/5xlpeMj.png", scene);
+    texture2.uScale = 4;
+    texture2.vScale = 2;
+    mat2.diffuseTexture = texture2;
+    cluster1.material = mat2;
+
+    var mat3 = new BABYLON.StandardMaterial("mat", scene);
+    var texture3 = new BABYLON.Texture("https://i.imgur.com/64cyEFF.jpg", scene);
+    texture3.uScale = 1;
+    texture3.vScale = 1;
+    mat3.diffuseTexture = texture3;
+    front.material = mat3;
+    frontleft.material = mat3;
+    frontright.material = mat3;
+    right.material = mat3;
+    left.material = mat3;
+    back.material = mat3;
+	
+    
+    
 
 
     secondSceneFunctions.animateCameraToPosition(GameEngine.camera, 45, 300, new BABYLON.Vector3(-100, 20, 100));
