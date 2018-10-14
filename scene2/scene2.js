@@ -1,3 +1,17 @@
+var secondSceneFunctions = {};
+
+secondSceneFunctions.animateCameraTargetToPosition = function(cam, speed, frameCount, newPos) {
+    var ease = new BABYLON.CubicEase();
+    ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+    BABYLON.Animation.CreateAndStartAnimation('at3', cam, 'target', speed, frameCount, cam.target, newPos, 0, ease);
+}
+
+secondSceneFunctions.animateCameraToPosition = function(cam, speed, frameCount, newPos) {
+    var ease = new BABYLON.CubicEase();
+    ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+    BABYLON.Animation.CreateAndStartAnimation('at2', cam, 'position', speed, frameCount, cam.position, newPos, 0, ease);
+}
+
 var createSecondScene = function (GameEngine) {
 
     // Create the scene space
@@ -8,13 +22,10 @@ var createSecondScene = function (GameEngine) {
     light.intensity = 0.5;
 
     // Parameters : name, position, scene
-    var camera = new BABYLON.UniversalCamera("UniversalCamera", new BABYLON.Vector3(0, 0, -10), scene);
-
-// Targets the camera to a particular position. In this case the scene origin
-    camera.setTarget(BABYLON.Vector3.Zero());
-
-// Attach the camera to the canvas
-    camera.attachControl(GameEngine.canvas, true);
+    var camera = new BABYLON.ArcRotateCamera("camera2", -Math.PI/4, 1.1, 165, new BABYLON.Vector3(0, 0, -10), scene);
+    camera.setPosition(new BABYLON.Vector3(0,20,0));
+    camera.setTarget(new BABYLON.Vector3(0,10,150));
+    camera.detachControl(GameEngine.canvas, true);
 
 
     // Add and manipulate meshes in the scene
@@ -47,8 +58,20 @@ var createSecondScene = function (GameEngine) {
     var ceiling = ground.clone("ceiling");
 	ceiling.rotate(BABYLON.Axis.X, Math.PI, BABYLON.Space.LOCAL);
     ground.position.y = -45;
-
-
+    
+    secondSceneFunctions.animateCameraToPosition(camera, 45, 300, new BABYLON.Vector3(-100, 20, 100));
+    secondSceneFunctions.animateCameraTargetToPosition(camera, 45, 300, new BABYLON.Vector3(-100, 10, 150));
+    
+    GameAudio.sounds.intense1.play();
+    setTimeout(function() {
+        showCaption("Well, wires were connected, but can you deal with a task a bit faster? You are not going to finish another one… ");
+        GameAudio.sounds.narrator3.play();
+        setTimeout(function() {
+            hideCaption();
+            GameAudio.sounds.narrator3.pause();
+            loadMinigame("minigame1.min.html");
+        }, 8000);
+    }, 5000);
 
     return scene;
 
